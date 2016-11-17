@@ -2,5 +2,6 @@ skb-start урок 1 - вводная лекция
 skb1 урок 2 - покемоны
 skb1_task2a урок 2 задача А - сумма a+b
 skb1_task2b урок 2 задача Б - преобразование fullname в ФИО
+skb1_task2c урок 2 задача C - получить username из запроса
 skb2 урок 3 - Express.js & MongoDB
 skb2_task3a урок 3 задача А - GET внутренних подструктур и свойст JSON-объекта

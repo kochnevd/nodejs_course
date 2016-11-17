@@ -72,19 +72,3 @@ app.get('/', async (req, res) => {
 app.listen(3000, function () {
   console.log('Example app listening on port 3000!');
 });
-
-
-//const arr = [
-//  "https://vk.com/igor.suvorov",
-//  "https://twitter.com/suvorovigor",
-//  "https://telegram.me/skillbranch",
-//  "Https://Telegram.ME/SkillBranch",
-//  "@skillbranch",
-//  "https://vk.com/skillbranch?w=wall-117903599_1076"
-//];
-//
-//arr.forEach((url) => {
-//  const username = canonize(url);
-//  console.log(username);
-//});
-//
