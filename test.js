@@ -1,42 +1,63 @@
-function canonize(url) {
-  //const re = new RegExp("@?(https?:)?(\/\/)?([a-z]*)");
-  //const username = url.match(re);
-  //const username=url;
+function canonize(item) {
 
-  //     \/\/.+\/(\w+)|^(\w+)$
+  var result = item.toLowerCase().trim();
 
-  var username = url.match(/\/\/.+\/([^\/\?]+)/);
-  if (username && username[1]) {
-    username = username[1];
+  // Вначале уже может быть решетка, уберем ее, чтоб не мешалась
+  if (result.length>0 && result[0]=='#') {
+    result = result.substr(1);
   }
-  else {
-    var username = url.match(/^@?([^\/\?]+)/);
-    if (username && username[1]) {
-      username = username[1];
+
+  result = result.match(/^(\d|[a-f]){1,6}$/);
+  if (result && result[1]) {
+    result = result[0];
+    switch (result.length) {
+      //case 1:
+      //  result=result.repeat(2)+'0'.repeat(4);
+      //  break;
+      //case 2:
+      //  result=result+'0'.repeat(4);
+      //  break;
+      case 3:
+        result=result[0].repeat(2)+result[1].repeat(2)+result[2].repeat(2);
+        break;
+      //case 4:
+      //  result=result+'0'.repeat(2);
+      //  break;
+      case 6:
+        break;
+      default:
+        result=null;
     }
   }
 
-  //const  username = url.match(/^@?([^\/\?]+)/);
+  if(result)
+    return '#' + result;
+  else
+    return result;
 
-  return '@' + username;
 };
 
 
 const arr = [
-  "https://vk.com/igor.suvorov",
-  "https://twitter.com/suvorovigor",
-  "https://telegram.me/skillbranch",
-  "Https://Telegram.ME/SkillBranch",
-  "@skillbranch",
-  "skillbranch",
-  "https://vk.com/skillbranch?w=wall-117903599_1076",
-  "https://vk.com/skillbranch",
-  '//vk.com/skillbranch'
+  " 123abc",
+  "123abc",
+  "123ABC",
+  "fff",
+  "xfiles",
+  "ff4000",
+  "abc",
+  "ab",
+  "abcd",
+  "abcde",
+  "b",
+  "",
+  "0",
+  "#123abc",
 ];
 
-arr.forEach((url) => {
-  console.log(url);
-  const username = canonize(url);
-  console.log(username);
+arr.forEach((item) => {
+  console.log(item);
+  const color = canonize(item);
+  console.log(color);
   console.log('****************************');
 });
